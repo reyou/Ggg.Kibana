@@ -1,0 +1,6 @@
+POST logstash*/_search?pretty
+{
+  "query":{
+    "match_all" : {}
+  }
+}

@@ -21,3 +21,6 @@ Install the new version of X-Pack into Elasticsearch.
 $ cd D:\Programs2\elasticsearch-6.2.1\elasticsearch-6.2.1\bin\
 $ .\elasticsearch-plugin.bat install x-pack
 //=============================================================================
+No Compatible Fields: types: geo_point
+https://discuss.elastic.co/t/no-compatible-fields-types-geo-point/137151
+//=============================================================================

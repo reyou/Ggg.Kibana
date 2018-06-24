@@ -1,0 +1,23 @@
+{
+  "bool": {
+    "should": [
+      {
+        "term": {
+          "geoip.country_name.raw": "Canada"
+        }
+      },
+      {
+        "term": {
+          "geoip.country_name.raw": "China"
+        }
+      }
+    ],
+    "must": [
+      {
+        "term": {
+          "response": "404"
+        }
+      }
+    ]
+  }
+}

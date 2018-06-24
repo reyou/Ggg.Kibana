@@ -1,4 +1,5 @@
 // https://www.elastic.co/guide/en/kibana/6.3/tutorial-load-dataset.html
+Elasticsearch bulk API.ps1
 //=============================================================================
 The Shakespeare data set has this structure:
 {
@@ -22,5 +23,56 @@ PUT /shakespeare
    }
   }
  }
+}
+//=============================================================================
+PUT /logstash-2015.05.18
+{
+  "mappings": {
+    "log": {
+      "properties": {
+        "geo": {
+          "properties": {
+            "coordinates": {
+              "type": "geo_point"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//=============================================================================
+PUT /logstash-2015.05.19
+{
+  "mappings": {
+    "log": {
+      "properties": {
+        "geo": {
+          "properties": {
+            "coordinates": {
+              "type": "geo_point"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+//=============================================================================
+PUT /logstash-2015.05.20
+{
+  "mappings": {
+    "log": {
+      "properties": {
+        "geo": {
+          "properties": {
+            "coordinates": {
+              "type": "geo_point"
+            }
+          }
+        }
+      }
+    }
+  }
 }
 //=============================================================================
