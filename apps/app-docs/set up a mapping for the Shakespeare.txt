@@ -1,0 +1,26 @@
+// https://www.elastic.co/guide/en/kibana/6.3/tutorial-load-dataset.html
+//=============================================================================
+The Shakespeare data set has this structure:
+{
+    "line_id": INT,
+    "play_name": "String",
+    "speech_number": INT,
+    "line_number": "String",
+    "speaker": "String",
+    "text_entry": "String",
+}
+//=============================================================================
+PUT /shakespeare
+{
+ "mappings": {
+  "doc": {
+   "properties": {
+    "speaker": {"type": "keyword"},
+    "play_name": {"type": "keyword"},
+    "line_id": {"type": "integer"},
+    "speech_number": {"type": "integer"}
+   }
+  }
+ }
+}
+//=============================================================================

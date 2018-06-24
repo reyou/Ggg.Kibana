@@ -1,0 +1,2 @@
+# https://www.elastic.co/guide/en/kibana/6.3/tutorial-discovering.html
+account_number:<100 AND balance:>47500
