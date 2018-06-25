@@ -1,0 +1,12 @@
+For the purposes of this tutorial, you will continue to use Metricbeat 
+data to add another visualization that monitors memory consumption. 
+To start, use the following expression to chart the maximum value of 
+system.memory.actual.used.bytes.
+
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+//=============================================================================
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+.divide(1000000)
+.divide(1024)
+.label(GB)
+//=============================================================================

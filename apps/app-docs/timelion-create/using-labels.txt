@@ -1,0 +1,7 @@
+It’s a bit hard to differentiate the two series. Customize the labels in order
+to easily distinguish them. You can always append the .label() function to
+any expression to add a custom label. Enter the below expression into the
+Timelion query bar to customize your labels:
+
+.es(offset=-1h,index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct').label('last hour'),
+.es(index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct').label('current hour')

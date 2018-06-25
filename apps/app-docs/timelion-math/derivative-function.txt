@@ -1,0 +1,7 @@
+Monitoring network traffic is much more valuable when plotting the 
+rate of change. The derivative() function is used do just that - plot 
+the change in values over time. This can be easily done by appending the 
+.derivative() to the end of an expression. Use the following expression 
+to update your visualization:
+
+.es(index=metricbeat*, timefield=@timestamp, metric=max:system.network.in.bytes).derivative()

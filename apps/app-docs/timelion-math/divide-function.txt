@@ -1,0 +1,10 @@
+To make this visualization a bit easier to consume, convert the series 
+from bytes to megabytes. Timelion has a .divide() function that can 
+be used. .divide() accepts the same input as .multiply() and 
+will divide the series by the divisor defined. Use the following 
+expression to update your visualization:
+
+.es(index=metricbeat*, timefield=@timestamp, metric=max:system.network.in.bytes)
+.derivative().divide(1048576), 
+.es(index=metricbeat*, timefield=@timestamp, metric=max:system.network.out.bytes)
+.derivative().multiply(-1).divide(1048576)

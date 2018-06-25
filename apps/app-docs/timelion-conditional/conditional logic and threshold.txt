@@ -1,0 +1,13 @@
+Since there are two thresholds, it makes sense to style them differently. 
+Use the gt operator to color the warning threshold yellow with 
+.color('#FFCC11') and the severe threshold red with .color('red'). 
+Enter the following expression into the Timelion query bar to apply the 
+conditional logic and threshold styling:
+
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes'), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+.if(gt,10000000000,.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes'),null)
+.label('warning').color('#FFCC11'), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+.if(gt,11500000000,.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes'),null)
+.label('severe').color('red')

@@ -1,0 +1,5 @@
+To start tracking the inbound / outbound network traffic, your first 
+expression will calculate the maximum value of system.network.in.bytes. 
+Enter the expression below into your Timelion query bar:
+
+.es(index=metricbeat*, timefield=@timestamp, metric=max:system.network.in.bytes)

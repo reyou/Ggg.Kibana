@@ -1,0 +1,2 @@
+.es(index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct'),
+.es(offset=-1h,index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct')

@@ -1,0 +1,15 @@
+Now that you have thresholds and a moving average, let’s format the 
+visualization so it is a bit easier to consume. As with the last 
+section, use the .color(), .line(), .title() and .legend() functions 
+to update your visualization accordingly:
+
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+.label('max memory').title('Memory consumption over time'), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+.if(gt,12500000000,.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes'),null)
+.label('warning').color('#FFCC11').lines(width=5), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+.if(gt,15000000000,.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes'),null)
+.label('severe').color('red').lines(width=5), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes').mvavg(10)
+.label('mvavg').lines(width=2).color(#5E5E5E).legend(columns=4, position=nw)

@@ -1,0 +1,14 @@
+To differentiate the last hour series a bit more, you are going 
+to change the chart type to an area chart. In order do so, 
+you’ll need to use the .lines() function to customize the line 
+chart. You’ll be setting the fill and width arguements to set the 
+fill of the line chart and line width respectively. In this example, 
+you will set the fill level to 1 and the width of the border to 0.5 by 
+appending .lines(fill=1,width=0.5). Use the following expression in the 
+Timelion query bar:
+
+.es(offset=-1h,index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct')
+.label('last hour').lines(fill=1,width=0.5), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct')
+.label('current hour').title('CPU usage over time')
+

@@ -1,0 +1,14 @@
+Let’s color these series so that the current hour series pops a 
+bit more than the last hour series. The color() function can 
+be used to change the color of any series and accepts standard 
+color names, hexadecimal values or a color schema for grouped 
+series. For this example you will use .color(gray) for the last 
+hour and .color(#1E90FF) for the current hour. Enter the following 
+expression into the Timelion query bar to make the adjustments:
+
+.es(offset=-1h,index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct')
+.label('last hour').lines(fill=1,width=0.5).color(gray), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct')
+.label('current hour').title('CPU usage over time').color(#1E90FF)
+
+

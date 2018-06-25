@@ -1,0 +1,11 @@
+Now for the outbound traffic. You’ll need to add a similar calculation 
+for system.network.out.bytes. Since outbound traffic is leaving your 
+machine, it makes sense to represent this metric as a negative number. 
+The .multiply() function will multiply the series by a number, the 
+result of a series or a list of series. For this example, you will 
+use .multiply(-1) to convert the outbound network traffic to a negative 
+value. Use the following expression to update your visualization:
+
+.es(index=metricbeat*, timefield=@timestamp, metric=max:system.network.in.bytes).derivative(), 
+.es(index=metricbeat*, timefield=@timestamp, metric=max:system.network.out.bytes).derivative()
+.multiply(-1)

@@ -1,0 +1,10 @@
+Utilizing the formatting functions .title(), .label(), .color(), .lines() and 
+.legend() learned in the last section, let’s clean up the visualization 
+a bit. Use the following expression to update your visualization:
+
+.es(index=metricbeat*, timefield=@timestamp, metric=max:system.network.in.bytes)
+.derivative().divide(1048576).lines(fill=2, width=1).color(green)
+.label("Inbound traffic").title("Network traffic (MB/s)"), 
+.es(index=metricbeat*, timefield=@timestamp, metric=max:system.network.out.bytes)
+.derivative().multiply(-1).divide(1048576).lines(fill=2, width=1).color(blue)
+.label("Outbound traffic").legend(columns=2, position=nw)

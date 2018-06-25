@@ -1,0 +1,17 @@
+For additional information on Timelions conditional capabilities, check out 
+the blog post I have but one .condition().
+Now that you have thresholds defined to easily identify outliers, let’s 
+create a new series to determine what the trend really is. Timelion’s mvavg() 
+function allows you to calculate the moving average over a given window. 
+This is especially helpful for noisey time series. For this tutorial, you will 
+use .mvavg(10) to create a moving average with a window of 10 data points. 
+Use the following expression to create a moving average of the maximum memory usage:
+
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes'), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+.if(gt,10500000000,.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes'),null)
+.label('warning').color('#FFCC11'), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+.if(gt,11500000000,.es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes'),null)
+.label('severe').color('red'), .es(index=metricbeat-*, timefield='@timestamp', metric='max:system.memory.actual.used.bytes')
+.mvavg(10)

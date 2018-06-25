@@ -1,0 +1,15 @@
+Last but not least, adjust the legend so that it takes up as little 
+space as possible. You can utilize the .legend() function to set the 
+position and style of the legend. For this example, place the legend 
+in the north west position of the visualization with two columns by 
+appending .legend(columns=2, position=nw) to the original series. 
+Use the following expression to make the adjustments:
+
+.es(offset=-1h,index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct')
+.label('last hour').lines(fill=1,width=0.5)
+.color(gray), 
+.es(index=metricbeat-*, timefield='@timestamp', metric='avg:system.cpu.user.pct')
+.label('current hour').title('CPU usage over time').color(#1E90FF)
+.legend(columns=2, position=nw)
+
+
