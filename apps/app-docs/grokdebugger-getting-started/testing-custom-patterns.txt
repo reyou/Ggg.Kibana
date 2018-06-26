@@ -1,0 +1,10 @@
+//=============================================================================
+Repeat the steps that you followed previously to enter the sample message 
+and grok pattern. For this example, let’s use the following sample message:
+
+Jan  1 06:25:43 mailserver14 postfix/cleanup[21403]: BEF25A72965: message-id=<20130101142543.5828399CCAF@mailserver14.example.com>
+//=============================================================================
+And this grok pattern:
+
+%{SYSLOGBASE} %{POSTFIX_QUEUEID:queue_id}: %{MSG:syslog_message}
+//=============================================================================
