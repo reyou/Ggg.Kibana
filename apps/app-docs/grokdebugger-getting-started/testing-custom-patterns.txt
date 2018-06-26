@@ -8,3 +8,13 @@ And this grok pattern:
 
 %{SYSLOGBASE} %{POSTFIX_QUEUEID:queue_id}: %{MSG:syslog_message}
 //=============================================================================
+Expand Custom Patterns and enter pattern definitions for any custom patterns 
+that you want to use in the grok expression. 
+Each pattern definition must be specified on its own line.
+
+For the grok pattern in the example, you need to specify pattern definitions for POSTFIX_QUEUEID and MSG:
+
+POSTFIX_QUEUEID [0-9A-F]{10,11}
+MSG message-id=<%{GREEDYDATA}>
+
+//=============================================================================
